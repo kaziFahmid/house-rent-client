@@ -31,7 +31,7 @@ export default function Signup() {
                 password:password,
               
               });
-              navigation('/')
+              navigation('/dashboard')
           })
           .catch((error) => console.error(error));
       };

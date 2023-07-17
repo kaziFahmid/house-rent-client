@@ -1,6 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
 import React, { useContext } from 'react'
 import { AuthContext } from '../../AuthProvider'
+import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 
 export default function OwnedHouses() {
     const{currentUser}=useContext(AuthContext)
@@ -11,10 +15,20 @@ export default function OwnedHouses() {
           return res.json()
         },
       })
+
+      let handleDelete=(_id)=>{
+        axios.delete(`/houses/${_id}`)
+        .then((res)=>{
+            if(res.deletedCount>0){
+                refetch()
+                toast("Deleted House")
+            }
+        })
+      }
   return (
    <>
    
-   
+   <ToastContainer />
    <h1 className='text-4xl text-center font-bold mt-7'>Owned <b className='text-red-500'>Houses</b></h1>
    
    
@@ -64,8 +78,8 @@ export default function OwnedHouses() {
                <td>{house?.phoneNumber}</td>
                <td>{house?.description}</td>
                <td>
-               <button className='btn bg-yellow-500 text-white'>Edit</button>
-                   <button className='btn bg-red-500 text-white'>Delete</button>
+              <Link to={`/dashboard/houseowner/edit-house/${house?._id}`}> <button className='btn bg-yellow-500 text-white'>Edit</button></Link>
+                   <button className='btn bg-red-500 text-white' onClick={()=>{handleDelete(house?._id)}}>Delete</button>
                </td>
              </tr> })}  
     </tbody>

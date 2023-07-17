@@ -26,7 +26,7 @@ export default function Login() {
         password: password,
 
       });
-      navigate('/');
+      navigate('/dashboard');
       
     } catch (error) {
       console.error(error);

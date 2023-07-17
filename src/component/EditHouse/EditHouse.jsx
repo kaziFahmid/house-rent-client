@@ -1,11 +1,14 @@
-import React, { useContext, useState } from 'react'
-import { AuthContext } from '../../AuthProvider';
-import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
 import { useQuery } from '@tanstack/react-query';
-export default function AddNewHouse() {
+import axios from 'axios';
+import React, { useContext, useState } from 'react'
 
+import { AuthContext } from '../AuthProvider';
+import { useLoaderData } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+export default function EditHouse() {
+    const data=useLoaderData()
+    console.log(data)
     const { currentUser } = useContext(AuthContext);
     const [phoneNumberError, setPhoneNumberError] = useState('');
 
@@ -53,13 +56,14 @@ let house={name,
     phoneNumber,
     description
     }
-
-axios.post('/houses',house)
-.then(res=>{
-   if(res.insertedId){
-    toast("New House has been added")
-   }
+axios.put(`/houses/${data?._id}`,house)
+.then((res)=>{
+    if(res.modifiedCount>0){
+        refetch()
+        toast("Updated successfully")
+    }
 })
+
 
     }
   return (
@@ -77,6 +81,7 @@ axios.post('/houses',house)
             type="text"
             id="name"
             name="name"
+            defaultValue={data?.name}
             required
             className="border border-gray-300 rounded-md p-2 w-full"
           />
@@ -89,6 +94,7 @@ axios.post('/houses',house)
           <input
             type="text"
             id="address"
+            defaultValue={data?.address}
             name="address"
             required
             className="border border-gray-300 rounded-md p-2 w-full"
@@ -103,6 +109,7 @@ axios.post('/houses',house)
             type="text"
             id="city"
             name="city"
+            defaultValue={data?.city}
             required
             className="border border-gray-300 rounded-md p-2 w-full"
           />
@@ -115,6 +122,7 @@ axios.post('/houses',house)
           <input
             type="number"
             id="bedrooms"
+            defaultValue={data?.bedrooms}
             name="bedrooms"
             required
             className="border border-gray-300 rounded-md p-2 w-full"
@@ -128,6 +136,7 @@ axios.post('/houses',house)
           <input
             type="number"
             id="bathrooms"
+            defaultValue={data?.bathrooms}
             name="bathrooms"
             required
             className="border border-gray-300 rounded-md p-2 w-full"
@@ -141,6 +150,7 @@ axios.post('/houses',house)
           <input
             type="text"
             id="roomSize"
+            defaultValue={data?.roomSize}
             name="roomSize"
             required
             className="border border-gray-300 rounded-md p-2 w-full"
@@ -154,6 +164,7 @@ axios.post('/houses',house)
           <input
             type="text"
             id="picture"
+            defaultValue={data?.picture}
             name="picture"
             required
             className="border border-gray-300 rounded-md p-2 w-full"
@@ -167,6 +178,7 @@ axios.post('/houses',house)
           <input
             type="date"
             id="availabilityDate"
+            defaultValue={data?.availabilityDate}
             name="availabilityDate"
             required
             className="border border-gray-300 rounded-md p-2 w-full"
@@ -180,6 +192,7 @@ axios.post('/houses',house)
           <input
             type="number"
             id="rentPerMonth"
+            defaultValue={data?.rentPerMonth}
             name="rentPerMonth"
             required
             className="border border-gray-300 rounded-md p-2 w-full"
@@ -194,6 +207,7 @@ axios.post('/houses',house)
             type="number"
             id="phoneNumber"
             name="phoneNumber"
+            defaultValue={data?.phoneNumber}
             required
             className="border border-gray-300 rounded-md p-2 w-full"
           />
@@ -209,6 +223,7 @@ axios.post('/houses',house)
           <textarea
             id="description"
             name="description"
+            defaultValue={data?.description}
             className="border border-gray-300 rounded-md p-2 w-full"
             rows="4"
             required
@@ -216,11 +231,9 @@ axios.post('/houses',house)
         </div>
 
         <button type="submit" className="bg-red-500 btn text-white">
-          Submit
+          Edit
         </button>
       </form>
     </div>
-    </>
-
-  )
+    </>)
 }
