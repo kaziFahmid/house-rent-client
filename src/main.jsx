@@ -12,6 +12,9 @@ import Login from './component/Registrations/Login';
 import Signup from './component/Registrations/Signup';
 import axios from 'axios';
 import Dashboard from './component/Dashboard/Dashboard';
+import AddNewHouse from './component/Dashboard/AddNewHouse/AddNewHouse';
+import OwnedHouses from './component/Dashboard/OwnedHouses/OwnedHouses';
+import ManageBookings from './component/Dashboard/ManageBookings/ManageBookings';
 axios.defaults.baseURL=`http://localhost:5000/`
 axios.interceptors.request.use((req)=>{return req})
 axios.interceptors.response.use((res)=>{return res.data})
@@ -31,6 +34,20 @@ const router = createBrowserRouter([
   {  
     path: "/dashboard",
  element: <Dashboard/>,
+ children:[
+  {
+    path: "/dashboard/houseowner/add-new-house",
+    element: <AddNewHouse/>,
+  },
+  {
+    path: "/dashboard/houseowner/owned-houses",
+    element: <OwnedHouses/>,
+  },
+   {
+    path: "/dashboard/houserenter/manage-bookings",
+    element: <ManageBookings/>,
+  }
+ ]
  
 
  },
