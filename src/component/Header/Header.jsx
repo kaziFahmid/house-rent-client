@@ -42,7 +42,7 @@ export default function Header() {
     <ul className=' hidden md:flex justify-center items-center gap-5'>
         <li className='btn btn-ghost normal-case text-xl text-black hover:text-red-500'>Home+</li>
         <li  className='btn btn-ghost normal-case text-xl text-black hover:text-red-500'>About</li>
-        <li  className='btn btn-ghost normal-case text-xl text-black hover:text-red-500'>Dashboard</li>
+     <Link to='/dashboard'>   <li  className='btn btn-ghost normal-case text-xl text-black hover:text-red-500'>Dashboard</li></Link>
        <Link to='/login'> <li  className='btn btn-ghost normal-case text-xl text-black hover:text-red-500'>Login</li></Link>
        <Link to='/signup'> <li  className='btn btn-ghost normal-case text-xl text-black hover:text-red-500'>Signup</li></Link>
     </ul>

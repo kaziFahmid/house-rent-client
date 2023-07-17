@@ -11,6 +11,7 @@ import Home from './component/Home/Home';
 import Login from './component/Registrations/Login';
 import Signup from './component/Registrations/Signup';
 import axios from 'axios';
+import Dashboard from './component/Dashboard/Dashboard';
 axios.defaults.baseURL=`http://localhost:5000/`
 axios.interceptors.request.use((req)=>{return req})
 axios.interceptors.response.use((res)=>{return res.data})
@@ -27,6 +28,12 @@ const router = createBrowserRouter([
     
     ]
   },
+  {  
+    path: "/dashboard",
+ element: <Dashboard/>,
+ 
+
+ },
 
   {  
     path: "/login",
