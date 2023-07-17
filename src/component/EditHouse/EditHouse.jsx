@@ -8,7 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 export default function EditHouse() {
     const data=useLoaderData()
-    console.log(data)
+
     const { currentUser } = useContext(AuthContext);
     const [phoneNumberError, setPhoneNumberError] = useState('');
 
@@ -47,12 +47,12 @@ let house={name,
     address,
     city,
     email:currentUser?.email,
-    bedrooms,
-    bathrooms,
-    roomSize,
+    bedrooms: parseInt(bedrooms),
+    bathrooms:parseInt(bathrooms),
+    roomSize:parseInt(roomSize),
     picture,
     availabilityDate,
-    rentPerMonth,
+    rentPerMonth:parseInt(rentPerMonth),
     phoneNumber,
     description
     }

@@ -33,7 +33,7 @@ export default function OwnedHouses() {
    
    
    <div className='mt-6 container mx-auto'>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto h-96">
   <table className="table">
     {/* head */}
     <thead>

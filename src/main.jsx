@@ -22,6 +22,7 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import EditHouse from './component/EditHouse/EditHouse';
+
 axios.defaults.baseURL=`http://localhost:5000/`
 axios.interceptors.request.use((req)=>{return req})
 axios.interceptors.response.use((res)=>{return res.data})
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
     children:[
       {  
          path: "/",
-      element: <Home/>,
+      element: <Home/>
 
       },
     
