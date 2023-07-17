@@ -1,12 +1,60 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
+import { AuthContext } from '../../AuthProvider';
+import axios from 'axios';
 
 export default function AddNewHouse() {
+    const { currentUser } = useContext(AuthContext);
+    const [phoneNumberError, setPhoneNumberError] = useState('');
+    let handleSubmit =(e)=>{
+        
+e.preventDefault()
+let name=e.target.name.value
+let address=e.target.address.value
+let city=e.target.city.value
+let bedrooms=e.target.bedrooms.value
+let bathrooms=e.target.bathrooms.value
+let roomSize=e.target.roomSize.value
+let picture=e.target.picture.value
+let availabilityDate=e.target.availabilityDate.value
+let rentPerMonth=e.target.rentPerMonth.value
+let phoneNumber=e.target.phoneNumber.value
+let description=e.target.description.value
+const phoneNumberPattern = /^(?:\+?88)?01[3-9]\d{8}$/; // Regex pattern for Bangladeshi phone number
+
+if (!phoneNumberPattern.test(phoneNumber)) {
+  setPhoneNumberError('Please enter a valid Bangladeshi phone number');
+  return;
+} else {
+  setPhoneNumberError('');
+  // Proceed with the signup process or other actions
+}
+
+let house={name,
+    address,
+    city,
+    email:currentUser?.email,
+    bedrooms,
+    bathrooms,
+    roomSize,
+    picture,
+    availabilityDate,
+    rentPerMonth,
+    phoneNumber,
+    description
+    }
+
+axios.post('/houses',house)
+.then(res=>{
+    console.log(res)
+})
+
+    }
   return (
 
     <>
     <h1 className='text-center text-4xl mt-6 font-bold'>Add New <span className='text-red-500'>House</span></h1>
       <div className=" h-96 overflow-y-auto  max-w-5xl mx-auto">
-      <form >
+      <form onSubmit={handleSubmit} >
         <div className="mb-4">
           <label htmlFor="name" className="block text-gray-700 font-bold mb-2">
             Name
@@ -135,6 +183,9 @@ export default function AddNewHouse() {
             required
             className="border border-gray-300 rounded-md p-2 w-full"
           />
+           {phoneNumberError && (
+                <p className="mt-2 text-xs text-red-500">{phoneNumberError}</p>
+              )}
         </div>
 
         <div className="mb-4">

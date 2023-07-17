@@ -8,7 +8,7 @@ import { AuthContext } from '../AuthProvider';
 export default function Login() {
   const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const { login } = useContext(AuthContext);
+  const { login,currentUser } = useContext(AuthContext);
 
   const onSubmit = async (data) => {
     const { email, password } = data;
@@ -27,10 +27,12 @@ export default function Login() {
 
       });
       navigate('/');
+      
     } catch (error) {
       console.error(error);
       // Handle login error or display error messages to the user
     }
+
   };
 
   return (

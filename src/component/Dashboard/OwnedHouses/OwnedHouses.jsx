@@ -1,6 +1,16 @@
-import React from 'react'
+import { useQuery } from '@tanstack/react-query'
+import React, { useContext } from 'react'
+import { AuthContext } from '../../AuthProvider'
 
 export default function OwnedHouses() {
+    const{currentUser}=useContext(AuthContext)
+    const { refetch, data: houses = [] } = useQuery({
+        queryKey: ['houses'],
+        queryFn: async () => {
+          const res = await fetch(`http://localhost:5000/houses?email=${currentUser?.email}`)
+          return res.json()
+        },
+      })
   return (
    <>
    
@@ -30,24 +40,34 @@ export default function OwnedHouses() {
       </tr>
     </thead>
     <tbody>
-    <tr>
- <td>SL</td>
-        <td>Picture</td>
-        <td>Name</td>
-        <td>Address</td>
-        <td>City</td>
-        <td>Bedrooms</td>
-        <td>Bathrooms</td>
-        <td>Room size</td>
-        <td>Availability Date</td>
-        <td>Rent per month</td>
-        <td>Phone number</td>
-        <td>Description</td>
-        <td>
-        <button className='btn bg-yellow-500 text-white'>Edit</button>
-            <button className='btn bg-red-500 text-white'>Delete</button>
-        </td>
-      </tr>
+    {houses.map((house,index)=>{return  <tr key={house?._id}>
+  
+   
+        <td>{index+1}</td>
+               <td>
+               
+               <div className="avatar">
+  <div className="w-16 rounded-full">
+    <img src={house?.picture} />
+  </div>
+</div>
+           
+               </td>
+               <td>{house?.name}</td>
+               <td>{house?.address}</td>
+               <td>{house?.city}</td>
+               <td>{house?.bedrooms}</td>
+               <td>{house?.bathrooms}</td>
+               <td>{house?.roomSize}</td>
+               <td>{house?.availabilityDate}</td>
+               <td>{house?.rentPerMonth}</td>
+               <td>{house?.phoneNumber}</td>
+               <td>{house?.description}</td>
+               <td>
+               <button className='btn bg-yellow-500 text-white'>Edit</button>
+                   <button className='btn bg-red-500 text-white'>Delete</button>
+               </td>
+             </tr> })}  
     </tbody>
   </table>
 </div>

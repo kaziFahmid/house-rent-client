@@ -1,9 +1,12 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
+import { AuthContext } from '../AuthProvider';
 
 export default function Signup() {
+    const navigation=useNavigate()
+    const { login } = useContext(AuthContext);
     const {
         register,
         formState: { errors },
@@ -22,7 +25,14 @@ export default function Signup() {
             password:password,
             role: role,
           })
-          .then((res) => console.log(res))
+          .then((res) =>{
+            login(res.token, {
+                email: email,
+                password:password,
+              
+              });
+              navigation('/')
+          })
           .catch((error) => console.error(error));
       };
     
