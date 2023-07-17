@@ -1,32 +1,50 @@
 import React, { useState } from 'react';
 import Banner from '../Banner/Banner';
 import { useQuery } from '@tanstack/react-query';
+import useHouses from '../hooks/useHouses';
 
 export default function Home() {
   const [rentRange, setRentRange] = useState([0, 10000]);
-const[city,setCity]=useState()
+  
+  const[city,setCity]=useState('')
+const[bedrooms,setBedrooms]=useState('')
+const[bathrooms,setBathrooms]=useState('')
+const[roomsize,setRoomsize]=useState('')
+const[availability,setAvailability]=useState('')
   const handleRentRangeChange = (event) => {
     setRentRange([
       parseInt(event.target.value),
       parseInt(event.target.max),
     ]);
   };
+
+  
   const { data: houses = [] } = useQuery({
-    queryKey: ['houses',city],
+    queryKey: [
+      'houses',
+      city,
+      bedrooms,
+      bathrooms,
+      roomsize,
+      availability,
+      rentRange[0], // Minimum rent
+      rentRange[1], // Maximum rent
+    ],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/houses?city=${city}`)
-      return res.json()
+      const res = await fetch(`http://localhost:5000/houses?city=${city}&bedrooms=${bedrooms}&bathrooms=${bathrooms}&roomsize=${roomsize}&availabilityDate=${availability}&minRent=${rentRange[0]}&maxRent=${rentRange[1]}`);
+      return res.json();
     },
-  })
-console.log(houses)
+  });
+  
   return (
     <>
       <Banner />
-      <div className="bg-slate-100   container mx-auto p-4">
+      <div className="bg-white   shadow-xl container mx-auto p-6">
         <div className="flex flex-wrap items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
           <div className="w-full sm:w-auto">
             <input
               type="text"
+              onChange={(e)=>{setCity(e.target.value)}}
               placeholder="Search by city"
               className="bg-white border border-gray-300 rounded-lg px-4 py-2 w-full"
             />
@@ -35,6 +53,7 @@ console.log(houses)
             <input
               type="number"
               placeholder="Bedrooms"
+              onChange={(e)=>setBedrooms(e.target.value)}
               className="bg-white border border-gray-300 rounded-lg px-4 py-2 w-full"
             />
           </div>
@@ -42,12 +61,14 @@ console.log(houses)
             <input
               type="number"
               placeholder="Bathrooms"
+              onChange={(e)=>setBathrooms(e.target.value)}
               className="bg-white border border-gray-300 rounded-lg px-4 py-2 w-full"
             />
           </div>
           <div className="w-full sm:w-auto">
             <input
               type="text"
+              onChange={(e)=>setRoomsize(e.target.value)}
               placeholder="Room Size"
               className="bg-white border border-gray-300 rounded-lg px-4 py-2 w-full"
             />
@@ -55,13 +76,14 @@ console.log(houses)
           <div className="w-full sm:w-auto">
             <input
               type="date"
+              onChange={(e)=>setAvailability(e.target.value)}
               placeholder="Availability"
               className="bg-white border border-gray-300 rounded-lg px-4 py-2 w-full"
             />
           </div>
           <div className="w-full sm:w-auto">
             <div className="flex items-center space-x-2">
-              <label htmlFor="rentRange" className="text-white">
+              <label htmlFor="rentRange" className="text-black">
                 Rent Range
               </label>
               <input
@@ -72,9 +94,9 @@ console.log(houses)
                 step="100"
                 value={rentRange[0]}
                 onChange={handleRentRangeChange}
-                className="w-64"
+                className="w-64 mt-5"
               />
-              <span className="text-white">{rentRange[0]}</span>
+              <span className="text-black">{rentRange[0]}</span>
             </div>
           </div>
         </div>
@@ -124,7 +146,7 @@ console.log(houses)
 
 
     <div className="card-actions">
-      <button className="btn btn-primary">Buy Now</button>
+      <button className="btn bg-red-500 text-white">Buy Now</button>
     </div>
   </div>
 </div>})}
