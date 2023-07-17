@@ -4,7 +4,8 @@ export default function AddNewHouse() {
   return (
 
     <>
-      <div className=" h-96 overflow-y-auto mt-24 max-w-5xl mx-auto">
+    <h1 className='text-center text-4xl mt-6 font-bold'>Add New <span className='text-red-500'>House</span></h1>
+      <div className=" h-96 overflow-y-auto  max-w-5xl mx-auto">
       <form >
         <div className="mb-4">
           <label htmlFor="name" className="block text-gray-700 font-bold mb-2">
@@ -128,7 +129,7 @@ export default function AddNewHouse() {
             Phone Number
           </label>
           <input
-            type="tel"
+            type="number"
             id="phoneNumber"
             name="phoneNumber"
             required
