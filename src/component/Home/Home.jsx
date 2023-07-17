@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import Banner from '../Banner/Banner';
 import { useQuery } from '@tanstack/react-query';
-import useHouses from '../hooks/useHouses';
+
 
 export default function Home() {
   const [rentRange, setRentRange] = useState([0, 10000]);
-  
+
   const[city,setCity]=useState('')
 const[bedrooms,setBedrooms]=useState('')
 const[bathrooms,setBathrooms]=useState('')
 const[roomsize,setRoomsize]=useState('')
 const[availability,setAvailability]=useState('')
+
+
   const handleRentRangeChange = (event) => {
     setRentRange([
       parseInt(event.target.value),
@@ -18,7 +20,6 @@ const[availability,setAvailability]=useState('')
     ]);
   };
 
-  
   const { data: houses = [] } = useQuery({
     queryKey: [
       'houses',
@@ -35,7 +36,10 @@ const[availability,setAvailability]=useState('')
       return res.json();
     },
   });
-  
+  const itemsPerPage=10
+const totalPage= Math.ceil(houses.length/itemsPerPage)
+
+const pageNumbers=[...Array(totalPage).keys()]
   return (
     <>
       <Banner />
@@ -155,7 +159,10 @@ const[availability,setAvailability]=useState('')
 
 
 
-
+{/* pagination */}
+<div className='text-center mt-10'>
+    {pageNumbers.map((pages)=><button key={pages._id}className='btn bg-red-500'>{pages}</button>)}
+</div>
 
 
 
