@@ -3,7 +3,7 @@ import { Sidebar } from 'primereact/sidebar';
 import { Button } from 'primereact/button';
 import "primereact/resources/themes/lara-light-indigo/theme.css";     
 import { GrMenu} from 'react-icons/gr';
-//core
+
 import "primereact/resources/primereact.min.css";                                       
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider';
@@ -59,7 +59,7 @@ export default function Header() {
       
         <li  className='btn btn-ghost normal-case text-xl text-black hover:text-red-500'>About</li>
         {currentUser&&<Link to='/dashboard'><li  className='btn btn-ghost normal-case text-xl text-black hover:text-red-500'>Dashboard</li></Link>}
-      {currentUser?<li  className='btn btn-ghost normal-case text-xl text-black hover:text-red-500' onClick={handleLogout}>LogOut</li>:    <Link to='/login'> <li  className='btn btn-ghost normal-case text-xl text-black hover:text-red-500'>Login</li></Link>}
+      {currentUser?<li  className='btn btn-ghost normal-case text-xl text-black hover:text-red-500' onClick={handleLogout}>LogOut</li>:    <Link to='/login'> <li  className='btn bg-red-500 text-white btn-ghost normal-case text-xl  hover:text-red-500'>Login</li></Link>}
         
 {!currentUser&&   
   <Link to='/signup'>      <li  className='btn btn-ghost normal-case text-xl text-black hover:text-red-500'>Signup</li></Link>}

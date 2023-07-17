@@ -24,6 +24,10 @@ import {
 import EditHouse from './component/EditHouse/EditHouse';
 import PrivateRoute from './component/PrivateRoute';
 
+import IsHouseRenter from './component/IsHouseRenter';
+import OwnerRoute from './component/OwnerRoute';
+
+
 axios.defaults.baseURL=`http://localhost:5000/`
 axios.interceptors.request.use((req)=>{return req})
 axios.interceptors.response.use((res)=>{return res.data})
@@ -46,20 +50,20 @@ const router = createBrowserRouter([
  children:[
   {
     path: "/dashboard/houseowner/add-new-house",
-    element: <AddNewHouse/>,
+    element: <OwnerRoute><AddNewHouse/></OwnerRoute>
   },
   {
     path: "/dashboard/houseowner/edit-house/:id",
-    element: <EditHouse/>,
+    element: <OwnerRoute><EditHouse/></OwnerRoute>,
     loader:({params})=> fetch(`http://localhost:5000/houses/${params.id}`)
   },
   {
     path: "/dashboard/houseowner/owned-houses",
-    element: <OwnedHouses/>,
+    element: <OwnerRoute><OwnedHouses/></OwnerRoute>,
   },
    {
     path: "/dashboard/houserenter/manage-bookings",
-    element: <ManageBookings/>,
+    element: <IsHouseRenter><ManageBookings/></IsHouseRenter>
   }
  ]
  

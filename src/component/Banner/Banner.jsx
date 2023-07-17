@@ -19,8 +19,11 @@ export default function Banner() {
             <div className='  mt-24  gap-5 grid md:grid-cols-2 mx-auto grid-cols-1 container'>
                 <div className='flex flex-col justify-center items-center  '>
                   <div>
-                  <h1 className=' text-3xl md:text-5xl font-bold text-black mb-4'>Find Your Dream House</h1>
+                  <h1 className=' text-3xl md:text-5xl font-bold text-black mb-4'>Find Your <strong className='text-red-500'>Dream House</strong></h1>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati est molestiae, minima omnis eius vel amet ex incidunt illo odio, earum perferendis, ab pariatur! Earum fuga aperiam autem explicabo ex!</p>
+                    <div className='mt-4'>
+                  <button className='bg-red-500 text-white btn'>Expolore</button>
+                  </div>
                   </div>
                 </div>
 
@@ -35,9 +38,13 @@ export default function Banner() {
         <div className='  mt-24  gap-5 grid md:grid-cols-2 mx-auto grid-cols-1 container'>
                 <div className='flex flex-col justify-center items-center  '>
                   <div>
-                  <h1 className=' text-3xl md:text-5xl font-bold text-black mb-4'>Find Your Dream House</h1>
+                  <h1 className=' text-3xl md:text-5xl font-bold text-black mb-4'>Find Your <strong className='text-red-500'>Dream House</strong></h1>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati est molestiae, minima omnis eius vel amet ex incidunt illo odio, earum perferendis, ab pariatur! Earum fuga aperiam autem explicabo ex!</p>
+                    <div className='mt-4'>
+                  <button className='bg-red-500 text-white btn'>Expolore</button>
                   </div>
+                  </div>
+                
                 </div>
 
                 <div>
@@ -51,9 +58,13 @@ export default function Banner() {
         <div className='  mt-24  gap-5 grid md:grid-cols-2 mx-auto grid-cols-1 container'>
                 <div className='flex flex-col justify-center items-center  '>
                   <div>
-                  <h1 className=' text-3xl md:text-5xl font-bold text-black mb-4'>Find Your Dream House</h1>
+                  <h1 className=' text-3xl md:text-5xl font-bold text-black mb-4'>Find Your <strong className='text-red-500'>Dream House</strong></h1>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati est molestiae, minima omnis eius vel amet ex incidunt illo odio, earum perferendis, ab pariatur! Earum fuga aperiam autem explicabo ex!</p>
+                    <div className='mt-4'>
+                  <button className='bg-red-500 text-white btn'>Expolore</button>
                   </div>
+                  </div>
+              
                 </div>
 
                 <div>
