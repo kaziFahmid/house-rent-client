@@ -4,6 +4,8 @@ import { BsFillHouseAddFill } from 'react-icons/bs';
 import { BsHousesFill } from 'react-icons/bs';
 
 export default function Dashboard() {
+    const { currentUser } = useContext(AuthContext);
+    
   return (
     <>
       <div className='grid md:grid-cols-12 grid-cols-1'>

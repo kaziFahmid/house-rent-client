@@ -4,29 +4,31 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
 export default function Signup() {
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-    watch,
-  } = useForm();
-
-  const onSubmit = (data) => {
-    const { email, password, username, image, role } = data;
-
-    axios
-      .post('/allusers', {
-        username: username,
-        email: email,
-        photoURL: image,
-        role: role,
-      })
-      .then((res) => console.log(res));
-  };
-
-  const password = watch('password');
-  const confirmPassword = watch('confirmpassword');
-  const isPasswordMatch = password === confirmPassword;
+    const {
+        register,
+        formState: { errors },
+        handleSubmit,
+        watch,
+      } = useForm();
+    
+      const onSubmit = (data) => {
+        const { email, password, username, image, role } = data;
+    
+        axios
+          .post('/register', {
+            username: username,
+            email: email,
+            photoURL: image,
+            password:password,
+            role: role,
+          })
+          .then((res) => console.log(res))
+          .catch((error) => console.error(error));
+      };
+    
+      const password = watch('password');
+      const confirmPassword = watch('confirmpassword');
+      const isPasswordMatch = password === confirmPassword;
 
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">

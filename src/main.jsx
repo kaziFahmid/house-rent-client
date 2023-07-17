@@ -15,6 +15,7 @@ import Dashboard from './component/Dashboard/Dashboard';
 import AddNewHouse from './component/Dashboard/AddNewHouse/AddNewHouse';
 import OwnedHouses from './component/Dashboard/OwnedHouses/OwnedHouses';
 import ManageBookings from './component/Dashboard/ManageBookings/ManageBookings';
+import { AuthProvider } from './component/AuthProvider';
 axios.defaults.baseURL=`http://localhost:5000/`
 axios.interceptors.request.use((req)=>{return req})
 axios.interceptors.response.use((res)=>{return res.data})
@@ -69,6 +70,6 @@ element: <Signup/>,
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-      <RouterProvider router={router} />
+     <AuthProvider> <RouterProvider router={router} /></AuthProvider>
   </React.StrictMode>,
 )
