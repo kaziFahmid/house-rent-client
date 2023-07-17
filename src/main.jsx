@@ -8,8 +8,12 @@ import {
 } from "react-router-dom";
 import Main from './component/Main/Main';
 import Home from './component/Home/Home';
-
-
+import Login from './component/Registrations/Login';
+import Signup from './component/Registrations/Signup';
+import axios from 'axios';
+axios.defaults.baseURL=`http://localhost:5000/`
+axios.interceptors.request.use((req)=>{return req})
+axios.interceptors.response.use((res)=>{return res.data})
 const router = createBrowserRouter([
   {
     path: "/",
@@ -23,7 +27,22 @@ const router = createBrowserRouter([
     
     ]
   },
+
+  {  
+    path: "/login",
+ element: <Login/>,
+
+ },
+
+ {  
+  path: "/signup",
+element: <Signup/>,
+
+},
 ]);
+
+
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
       <RouterProvider router={router} />
