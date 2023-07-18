@@ -1,18 +1,27 @@
 import React, { useState } from 'react';
 import Banner from '../Banner/Banner';
 import { useQuery } from '@tanstack/react-query';
+import useHousesCount from '../hooks/useHousesCount';
 
 
 export default function Home() {
   const [rentRange, setRentRange] = useState([0, 10000]);
-
+const[currentPage,setCurrentPage]=useState(0)
+console.log(currentPage)
   const[city,setCity]=useState('')
 const[bedrooms,setBedrooms]=useState('')
 const[bathrooms,setBathrooms]=useState('')
 const[roomsize,setRoomsize]=useState('')
 const[availability,setAvailability]=useState('')
+const [housescount]=useHousesCount()
 
+let itemsPerPage = 10;
+let pageNumbers = Math.ceil(housescount.result / itemsPerPage);
+let pagination = [];
 
+for (let i = 0; i <= pageNumbers; i++) {
+  pagination.push(i);
+}
   const handleRentRangeChange = (event) => {
     setRentRange([
       parseInt(event.target.value),
@@ -26,20 +35,20 @@ const[availability,setAvailability]=useState('')
       city,
       bedrooms,
       bathrooms,
+      currentPage,
       roomsize,
       availability,
       rentRange[0], // Minimum rent
       rentRange[1], // Maximum rent
     ],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/houses?city=${city}&bedrooms=${bedrooms}&bathrooms=${bathrooms}&roomsize=${roomsize}&availabilityDate=${availability}&minRent=${rentRange[0]}&maxRent=${rentRange[1]}`);
+      const res = await fetch(`http://localhost:5000/houses?city=${city}&bedrooms=${bedrooms}&bathrooms=${bathrooms}&roomsize=${roomsize}&availabilityDate=${availability}&minRent=${rentRange[0]}&maxRent=${rentRange[1]}&page=${currentPage}&limit=${itemsPerPage}`);
       return res.json();
     },
   });
-  const itemsPerPage=10
-const totalPage= Math.ceil(houses.length/itemsPerPage)
 
-const pageNumbers=[...Array(totalPage).keys()]
+
+
   return (
     <>
       <Banner />
@@ -158,11 +167,10 @@ const pageNumbers=[...Array(totalPage).keys()]
 </div>
 
 
-
-{/* pagination */}
-<div className='text-center mt-10'>
-    {pageNumbers.map((pages)=><button key={pages._id}className='btn bg-red-500'>{pages}</button>)}
+<div className='text-center mt-32'>
+{pagination.map((numbers,index)=>{return <button onClick={()=>{setCurrentPage(numbers)}} className={currentPage===numbers ? "bg-red-500  ms-4 text-white btn":"bg-slate-100 text-black btn ms-4"} key={index} >{numbers}</button>})}
 </div>
+
 
 
 

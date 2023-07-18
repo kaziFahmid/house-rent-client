@@ -19,6 +19,7 @@ export default function OwnedHouses() {
       let handleDelete=(_id)=>{
         axios.delete(`/houses/${_id}`)
         .then((res)=>{
+            console.log(res)
             if(res.deletedCount>0){
                 refetch()
                 toast("Deleted House")
