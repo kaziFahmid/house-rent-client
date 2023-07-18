@@ -7,6 +7,7 @@ import useHouseOwner from '../hooks/useHouseOwner';
 import { AuthContext } from '../AuthProvider';
 import toast, { Toaster } from 'react-hot-toast';
 import useBookings from '../hooks/useBookings';
+import BestHouse from './BestHouse/BestHouse';
 
 export default function Home() {
   const[refetch,housebookings]=useBookings()
@@ -82,7 +83,7 @@ return toast.error('You cannot add more than 2 bookings')
   position="top-center"
   reverseOrder={false}
 />
-      <div className="bg-white   shadow-xl container mx-auto p-6">
+      <div className="bg-white border-t-4 mt-16 rounded-md border-red-500    shadow-xl container mx-auto p-6">
         <div className="flex flex-wrap items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
           <div className="w-full sm:w-auto">
             <input
@@ -147,7 +148,7 @@ return toast.error('You cannot add more than 2 bookings')
 
 
 
-<div className='grid md:grid-cols-3 grid-cols-1 container mx-auto gap-8 mt-16'>
+<div className='grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 container mx-auto gap-8 mt-16'>
 {houses.map((house)=>{return <div key={house._id} className="card  bg-base-100 shadow-xl ">
   <figure className="px-10 pt-10">
     <img src={house.picture} alt="Shoes" className="rounded-xl img-fluid" />
@@ -213,6 +214,8 @@ description:house.description})}>Book Now</button>
 <div className='text-center mt-32'>
 {pagination.map((numbers,index)=>{return <button onClick={()=>{setCurrentPage(numbers)}} className={currentPage===numbers ? "bg-red-500  ms-4 text-white btn":"bg-slate-100 text-black btn ms-4"} key={index} >{numbers}</button>})}
 </div>
+
+<BestHouse/>
 
 
 
