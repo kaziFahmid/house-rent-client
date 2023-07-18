@@ -38,7 +38,7 @@ const[allusers]=useHouseOwner()
 <div  className='md:col-span-10'>
 <div >
 <div className="navbar bg-white shadow-sm text-primary-content">
-  <a className="btn btn-ghost normal-case text-xl">Dashboard</a>
+  <a className="btn btn-ghost normal-case  text-black text-2xl font-bold">Dashboard</a>
 
 </div>
 <Outlet/>

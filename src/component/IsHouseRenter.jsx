@@ -10,6 +10,7 @@ export default function IsHouseRenter({children}) {
     const{currentUser}=useContext(AuthContext)
     let location = useLocation();
     const[allusers]=useHouseOwner()
+    
     if(allusers.find((x)=>x?.email===currentUser?.email)?.role==="house renter"){
         return children
     }

@@ -26,6 +26,8 @@ import PrivateRoute from './component/PrivateRoute';
 
 import IsHouseRenter from './component/IsHouseRenter';
 import OwnerRoute from './component/OwnerRoute';
+import ViewBookings from './component/ViewBookings/ViewBookings';
+
 
 
 axios.defaults.baseURL=`http://localhost:5000/`
@@ -41,6 +43,7 @@ const router = createBrowserRouter([
       element: <Home/>
 
       },
+     
     
     ]
   },
@@ -64,6 +67,12 @@ const router = createBrowserRouter([
    {
     path: "/dashboard/houserenter/manage-bookings",
     element: <IsHouseRenter><ManageBookings/></IsHouseRenter>
+  },
+
+  {
+    path: "/dashboard/houserenter/view-bookings/:id",
+    element: <IsHouseRenter><ViewBookings/></IsHouseRenter>,
+    loader:({params})=>fetch(`http://localhost:5000/housebookings/${params.id}`)
   }
  ]
  

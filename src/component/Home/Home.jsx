@@ -1,13 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Banner from '../Banner/Banner';
 import { useQuery } from '@tanstack/react-query';
 import useHousesCount from '../hooks/useHousesCount';
-
+import axios from 'axios';
+import useHouseOwner from '../hooks/useHouseOwner';
+import { AuthContext } from '../AuthProvider';
+import toast, { Toaster } from 'react-hot-toast';
+import useBookings from '../hooks/useBookings';
 
 export default function Home() {
+  const[refetch,housebookings]=useBookings()
   const [rentRange, setRentRange] = useState([0, 10000]);
 const[currentPage,setCurrentPage]=useState(0)
-console.log(currentPage)
+const[allusers]=useHouseOwner()
+const{currentUser}=useContext(AuthContext)
   const[city,setCity]=useState('')
 const[bedrooms,setBedrooms]=useState('')
 const[bathrooms,setBathrooms]=useState('')
@@ -45,13 +51,37 @@ for (let i = 0; i <= pageNumbers; i++) {
       const res = await fetch(`http://localhost:5000/houses?city=${city}&bedrooms=${bedrooms}&bathrooms=${bathrooms}&roomsize=${roomsize}&availabilityDate=${availability}&minRent=${rentRange[0]}&maxRent=${rentRange[1]}&page=${currentPage}&limit=${itemsPerPage}`);
       return res.json();
     },
+
+
+
+
+
+
   });
 
-
+  let handleBookings=(houses)=>{
+   if(housebookings.length===2){
+return toast.error('You cannot add more than 2 bookings')
+   }
+    axios.post('/housebookings',houses)
+    .then(res=>{
+     if(res.insertedId){
+      refetch()
+      toast.success('Booking added')
+     }
+    
+    })
+  
+  }
+  
 
   return (
     <>
       <Banner />
+      <Toaster
+  position="top-center"
+  reverseOrder={false}
+/>
       <div className="bg-white   shadow-xl container mx-auto p-6">
         <div className="flex flex-wrap items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
           <div className="w-full sm:w-auto">
@@ -159,7 +189,20 @@ for (let i = 0; i <= pageNumbers; i++) {
 
 
     <div className="card-actions">
-      <button className="btn bg-red-500 text-white">Buy Now</button>
+      <button className="btn bg-red-500 text-white" onClick={()=>handleBookings({picture:house.picture,
+      username:allusers.find((x)=>x?.email===currentUser?.email)?.username,
+      email:allusers.find((x)=>x?.email===currentUser?.email)?.email,
+      phone:allusers.find((x)=>x?.email===currentUser?.email)?.phone,
+name:house.name,
+rentPerMonth:house.rentPerMonth,
+bathrooms:house.bathrooms,
+bedrooms:house.bedrooms,
+address:house.address,
+city:house.city,
+roomSize:house.roomSize,
+phoneNumber:house.phoneNumber,
+availabilityDate:house.availabilityDate,
+description:house.description})}>Book Now</button>
     </div>
   </div>
 </div>})}

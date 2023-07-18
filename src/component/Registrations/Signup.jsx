@@ -15,7 +15,7 @@ export default function Signup() {
       } = useForm();
     
       const onSubmit = (data) => {
-        const { email, password, username, image, role } = data;
+        const { email, password, username, image, role,phone } = data;
     
         axios
           .post('/register', {
@@ -24,6 +24,7 @@ export default function Signup() {
             photoURL: image,
             password:password,
             role: role,
+            phone:phone
           })
           .then((res) =>{
             login(res.token, {
@@ -198,6 +199,42 @@ export default function Signup() {
               )}
             </div>
           </div>
+
+          <div>
+            <label
+              htmlFor="phone"
+              className="block text-sm font-medium leading-6 text-gray-900"
+            >
+              Phone
+            </label>
+            <div className="mt-2">
+              <input
+                id="phone"
+                name="phone"
+                type="number"
+                autoComplete="phone"
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                {...register('phone', { required: 'Phone is required' })}
+                aria-invalid={errors.phone ? 'true' : 'false'}
+              />
+              {errors.phone && (
+                <p role="alert" className="text-red-500">
+                  {errors.phone.message}
+                </p>
+              )}
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
 
           <div>
             <label
