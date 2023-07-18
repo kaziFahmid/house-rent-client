@@ -11,7 +11,7 @@ export default function OwnedHouses() {
     const { refetch, data: houses = [] } = useQuery({
         queryKey: ['houses'],
         queryFn: async () => {
-          const res = await fetch(`http://localhost:5000/houses?email=${currentUser?.email}`)
+          const res = await fetch(`https://house-rent-server-two.vercel.app/houses?email=${currentUser?.email}`)
           return res.json()
         },
       })

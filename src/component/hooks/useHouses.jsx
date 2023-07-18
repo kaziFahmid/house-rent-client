@@ -5,7 +5,7 @@ export default function useHouses() {
     const { refetch, data: houses = [] } = useQuery({
         queryKey: ['houses'],
         queryFn: async () => {
-          const res = await fetch('http://localhost:5000/houses')
+          const res = await fetch('https://house-rent-server-two.vercel.app/houses')
           return res.json()
         },
       })

@@ -6,7 +6,7 @@ export default function useHousesCount() {
         queryKey: ['housescount'],
 
         queryFn: async () => {
-          const res = await fetch('http://localhost:5000/housescount')
+          const res = await fetch('https://house-rent-server-two.vercel.app/housescount')
           return res.json()
         },
       })

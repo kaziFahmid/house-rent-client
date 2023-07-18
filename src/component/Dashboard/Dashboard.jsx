@@ -22,7 +22,7 @@ const [visible, setVisible] = useState(false);
     <>
       <div className='grid lg:grid-cols-12 grid-cols-1'>
 <div className='lg:col-span-2'>
-    <div className='h-screen bg-slate-50 lg:flex justify-center hidden   flex-col items-center    '>
+    <div className='h-screen bg-slate-700 text-white lg:flex justify-center hidden   flex-col items-center    '>
 
 {allusers.find((x)=>x?.email===currentUser?.email)?.role==='house owner'?   <ul  >
             <li className='text-center text-2xl  '>House Owner</li>

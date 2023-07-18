@@ -30,7 +30,7 @@ import ViewBookings from './component/ViewBookings/ViewBookings';
 
 
 
-axios.defaults.baseURL=`http://localhost:5000/`
+axios.defaults.baseURL=`https://house-rent-server-two.vercel.app/`
 axios.interceptors.request.use((req)=>{return req})
 axios.interceptors.response.use((res)=>{return res.data})
 const router = createBrowserRouter([
@@ -58,7 +58,7 @@ const router = createBrowserRouter([
   {
     path: "/dashboard/houseowner/edit-house/:id",
     element: <OwnerRoute><EditHouse/></OwnerRoute>,
-    loader:({params})=> fetch(`http://localhost:5000/houses/${params.id}`)
+    loader:({params})=> fetch(`https://house-rent-server-two.vercel.app/houses/${params.id}`)
   },
   {
     path: "/dashboard/houseowner/owned-houses",
@@ -72,7 +72,7 @@ const router = createBrowserRouter([
   {
     path: "/dashboard/houserenter/view-bookings/:id",
     element: <IsHouseRenter><ViewBookings/></IsHouseRenter>,
-    loader:({params})=>fetch(`http://localhost:5000/housebookings/${params.id}`)
+    loader:({params})=>fetch(`https://house-rent-server-two.vercel.app/housebookings/${params.id}`)
   }
  ]
  

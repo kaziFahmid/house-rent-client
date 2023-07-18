@@ -49,7 +49,7 @@ for (let i = 0; i <= pageNumbers; i++) {
       rentRange[1], // Maximum rent
     ],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/houses?city=${city}&bedrooms=${bedrooms}&bathrooms=${bathrooms}&roomsize=${roomsize}&availabilityDate=${availability}&minRent=${rentRange[0]}&maxRent=${rentRange[1]}&page=${currentPage}&limit=${itemsPerPage}`);
+      const res = await fetch(`https://house-rent-server-two.vercel.app/houses?city=${city}&bedrooms=${bedrooms}&bathrooms=${bathrooms}&roomsize=${roomsize}&availabilityDate=${availability}&minRent=${rentRange[0]}&maxRent=${rentRange[1]}&page=${currentPage}&limit=${itemsPerPage}`);
       return res.json();
     },
 
