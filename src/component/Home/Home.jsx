@@ -8,8 +8,10 @@ import { AuthContext } from '../AuthProvider';
 import toast, { Toaster } from 'react-hot-toast';
 import useBookings from '../hooks/useBookings';
 import BestHouse from './BestHouse/BestHouse';
+import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
+  
   const[refetch,housebookings]=useBookings()
   const [rentRange, setRentRange] = useState([0, 10000]);
 const[currentPage,setCurrentPage]=useState(0)
@@ -21,7 +23,7 @@ const[bathrooms,setBathrooms]=useState('')
 const[roomsize,setRoomsize]=useState('')
 const[availability,setAvailability]=useState('')
 const [housescount]=useHousesCount()
-
+const navigate=useNavigate()
 let itemsPerPage = 10;
 let pageNumbers = Math.ceil(housescount.result / itemsPerPage);
 let pagination = [];
@@ -61,6 +63,10 @@ for (let i = 0; i <= pageNumbers; i++) {
   });
 
   let handleBookings=(houses)=>{
+    if(!currentUser){
+      navigate('/login')
+
+    }
    if(housebookings.length===2){
 return toast.error('You cannot add more than 2 bookings')
    }
@@ -203,7 +209,7 @@ city:house.city,
 roomSize:house.roomSize,
 phoneNumber:house.phoneNumber,
 availabilityDate:house.availabilityDate,
-description:house.description})}>Book Now</button>
+description:house.description})} disabled={allusers.find((x)=>x?.email===currentUser?.email)?.role==='house owner'&&true}>Book Now</button>
     </div>
   </div>
 </div>})}
