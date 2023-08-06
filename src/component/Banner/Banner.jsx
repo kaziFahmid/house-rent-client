@@ -2,8 +2,7 @@ import React from 'react';
 import { BiSolidBed } from 'react-icons/bi';
 import { BiSolidBath } from 'react-icons/bi';
 import { BsFillBuildingFill } from 'react-icons/bs';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+
 export default function Banner() {
 
   return (
@@ -12,7 +11,7 @@ export default function Banner() {
 
 <div className='flex  lg:gap-10 justify-between max-w-5xl mx-auto pt-9 lg:flex-row flex-col'>
   
-<div className='mt-12'>
+<div  className='mt-12'>
   <h1 className='lg:text-6xl text-3xl md:text-5xl font-semibold'>Rent Or Sell<br className='lg:block hidden'></br> your property easily</h1>
   <p className='mt-7 text-left'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum fugit voluptatem, excepturi labore, atque minima amet commodi odit cupiditate, ea dignissimos. Saepe eaque possimus cumque dolores eum, eligendi id obcaecati.</p>
   <div className='flex gap-7 md:flex-row flex-col justify-start items-center mt-9'>
@@ -25,7 +24,7 @@ export default function Banner() {
   </div>
 </div>
 
-<div >
+<div  >
   
 
 <div  className="  w-72 mx-auto lg:mx-0 bg-base-100 shadow-xl lg:mt-0 mt-9">
@@ -52,7 +51,7 @@ export default function Banner() {
 </div>
 <div className='flex lg:flex-row flex-col-reverse justify-between items-center lg:max-w-5xl mx-auto mt-9'>
 
-<div data-aos="fade-right" className="  md:stats w-full lg:w-fit shadow bg-white lg:mt-0 mt-5 flex flex-col lg:flex-row">
+<div  className="  md:stats w-full lg:w-fit shadow bg-white lg:mt-0 mt-5 flex flex-col lg:flex-row">
   
   <div className="stat lg:place-items-start place-items-center ">
     <h3 className="stat-title">Location</h3>
@@ -75,7 +74,7 @@ export default function Banner() {
 </div>
 
 
-<div  data-aos="fade-left" className=" w-44 border-2 border-indigo-600 bg-base-100 rounded-lg shadow-xl lg:mt-0 mt-9">
+<div   className=" w-44 border-2 border-indigo-600 bg-base-100 rounded-lg shadow-xl lg:mt-0 mt-9">
   <figure><img src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg" className='img-fluid rounded-lg' alt="Shoes" /></figure>
   <div className="px-4 mt-5">
   <div className='flex items-center  justify-start'>
