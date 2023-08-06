@@ -5,19 +5,14 @@ import { BsFillBuildingFill } from 'react-icons/bs';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 export default function Banner() {
-  AOS.init({
-    offset: 200,
-    duration: 600,
-    easing: 'ease-in-sine',
-    delay: 100,
-  });
+
   return (
    <>
  <section className='min-h-screen bg-[url(https://i.ibb.co/rF6NC72/26f884b20bbf7784b9a209048e15178c-1.png)]  bg-right bg-contain '>
 
 <div className='flex  lg:gap-10 justify-between max-w-5xl mx-auto pt-9 lg:flex-row flex-col'>
   
-<div data-aos="fade-right" className='mt-12'>
+<div className='mt-12'>
   <h1 className='lg:text-6xl text-3xl md:text-5xl font-semibold'>Rent Or Sell<br className='lg:block hidden'></br> your property easily</h1>
   <p className='mt-7 text-left'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum fugit voluptatem, excepturi labore, atque minima amet commodi odit cupiditate, ea dignissimos. Saepe eaque possimus cumque dolores eum, eligendi id obcaecati.</p>
   <div className='flex gap-7 md:flex-row flex-col justify-start items-center mt-9'>
@@ -30,7 +25,7 @@ export default function Banner() {
   </div>
 </div>
 
-<div data-aos="fade-left" >
+<div >
   
 
 <div  className="  w-72 mx-auto lg:mx-0 bg-base-100 shadow-xl lg:mt-0 mt-9">

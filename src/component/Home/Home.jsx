@@ -16,15 +16,9 @@ import { BsFillCalendarDateFill } from 'react-icons/bs';
 import WhoweAre from '../WhoweAre/WhoweAre';
 import FeedBacks from './FeedBacks/FeedBacks';
 import NewsLetter from '../NewsLetter/NewsLetter';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+
 export default function Home() {
-  AOS.init({
-    offset: 200,
-    duration: 600,
-    easing: 'ease-in-sine',
-    delay: 100,
-  });
+
   const[refetch,housebookings]=useBookings()
   const [rentRange, setRentRange] = useState([0, 10000]);
 const[currentPage,setCurrentPage]=useState(0)
@@ -202,7 +196,7 @@ return toast.error('You cannot add more than 2 bookings')
 
 
 <div className='grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 md:max-w-6xl mx-auto gap-8 mt-16 '>
-{houses.map((house)=>{return <div data-aos="fade-right" key={house._id} className="   bg-base-100 shadow-xl lg:mt-0 mt-9 relative">
+{houses.map((house)=>{return <div  key={house._id} className="   bg-base-100 shadow-xl lg:mt-0 mt-9 relative">
 <div className=" bg-indigo-400 px-4 py-2 text-white absolute top-0">Popular</div>
   <figure><img src= {house.picture} className='img-fluid rounded-t-lg  ' alt="Shoes" /></figure>
   <div className="px-4 mt-5">
