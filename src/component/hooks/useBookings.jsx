@@ -7,7 +7,7 @@ export default function useBookings() {
     const { refetch, data: housebookings = [] } = useQuery({
         queryKey: ['housebookings'],
         queryFn: async () => {
-          const res = await fetch(`https://house-rent-server-two.vercel.app/housebookings?email=${currentUser.email}`)
+          const res = await fetch(`https://house-rent-server-two.vercel.app/housebookings?email=${currentUser?.email}`)
           return res.json()
         },
       })

@@ -66,7 +66,7 @@ axios.post('/houses',house)
 
     <>
      <ToastContainer />
-    <h1 className='text-center text-4xl mt-6 font-bold'>Add New <span className='text-red-500'>House</span></h1>
+    <h1 className='text-center text-4xl mt-6 font-bold'>Add New <span className='text-indigo-500'>House</span></h1>
       <div className=" h-96 overflow-y-auto  max-w-5xl mx-auto">
       <form onSubmit={handleSubmit} >
         <div className="mb-4">
@@ -215,7 +215,7 @@ axios.post('/houses',house)
           ></textarea>
         </div>
 
-        <button type="submit" className="bg-red-500 btn text-white">
+        <button type="submit" className="bg-indigo-500 btn text-white">
           Submit
         </button>
       </form>

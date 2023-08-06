@@ -3,7 +3,7 @@ import { Sidebar } from 'primereact/sidebar';
 import { Button } from 'primereact/button';
 import "primereact/resources/themes/lara-light-indigo/theme.css";     
 import { GrMenu} from 'react-icons/gr';
-
+import { FaHome} from 'react-icons/fa';
 import "primereact/resources/primereact.min.css";                                       
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider';
@@ -25,11 +25,11 @@ export default function Header() {
     
 
   return (
-    <div className=" navbar bg-white shadow-md sticky top-0 z-50 text-primary-content gap-3 lg:gap-8 flex lg:flex-row flex-col justify-between items-center lg:py-7">
-    <a className="btn btn-ghost normal-case text-xl text-black">House<b className='text-red-500'>Hunting</b></a>
+    <>
 
-
-
+<div className="navbar bg-base-100  flex justify-between items-center border-b border-gray-300 py-3  ">
+  <a className="btn btn-ghost normal-case "><FaHome className=' text-xl md:text-4xl text-indigo-400'/> House Hunting</a>
+  
     {allusers.find((x)=>x?.email===currentUser?.email)?.role==="house renter"&& 
     <button className="btn md:hidden block">
   My Bookings
@@ -39,24 +39,17 @@ export default function Header() {
 
 
 
-
-
-
-
-
-
-
     <div className="card  flex md:hidden justify-content-center">
     <Sidebar style={{width:"80%"}} visible={visible} onHide={() => setVisible(false)}>
-     <ul className=' flex flex-col justify-center items-center gap-5'>
-<Link to="/"><li className='btn btn-ghost normal-case text-xl text-black hover:text-red-500'>Home+</li></Link>
+     <ul className='font-semibold flex flex-col justify-center items-center gap-5'>
+<Link to="/"><li >Home</li></Link>
   
        
         {currentUser&&<Link to='/dashboard'><li  className='btn btn-ghost normal-case text-xl text-black hover:text-red-500'>Dashboard</li></Link>}
-      {currentUser?<li  className='btn btn-ghost normal-case text-xl text-black hover:text-red-500' onClick={handleLogout}>LogOut</li>:    <Link to='/login'> <li  className='btn bg-red-500 text-white btn-ghost normal-case text-xl  hover:text-red-500'>Login</li></Link>}
+      {currentUser?<li   onClick={handleLogout}>LogOut</li>:    <Link to='/login'> <li  >Login</li></Link>}
         
 {!currentUser&&   
-  <Link to='/signup'>      <li  className='btn btn-ghost normal-case text-xl text-black hover:text-red-500'>Signup</li></Link>}
+  <Link to='/signup'>      <li  >Signup</li></Link>}
     </ul>
 
     </Sidebar>
@@ -68,13 +61,8 @@ export default function Header() {
 </div>
          
 
-
-
-
-
-
-    <ul className=' hidden md:flex justify-center items-center gap-5'>
-<Link to="/"><li className='btn btn-ghost normal-case text-xl text-black hover:text-red-500 '>Home+</li></Link>
+    <ul className=' font-bold hidden md:flex justify-center items-center gap-5'>
+<Link to="/"><li >Home</li></Link>
    {allusers.find((x)=>x?.email===currentUser?.email)?.role==="house renter"&& <li>
     <button className="btn">
   My Bookings
@@ -82,14 +70,26 @@ export default function Header() {
 </button>
     </li>}
     
-        {currentUser&&<Link to='/dashboard'><li  className='btn btn-ghost normal-case text-xl text-black hover:text-red-500'>Dashboard</li></Link>}
-      {currentUser?<li  className='btn btn-ghost normal-case text-xl text-black hover:text-red-500' onClick={handleLogout}>LogOut</li>:    <Link to='/login'> <li  className='btn bg-red-500 text-white btn-ghost normal-case text-xl  hover:text-red-500'>Login</li></Link>}
+        {currentUser&&<Link to='/dashboard'><li >Dashboard</li></Link>}
+      {currentUser?<li   onClick={handleLogout}>LogOut</li>:    <Link to='/login'> <li  ><button className='btn border bg-slate-100 px-7 border-slate-400' >Login</button></li></Link>}
         
 {!currentUser&&   
-  <Link to='/signup'>      <li  className='btn btn-ghost normal-case text-xl text-black hover:text-red-500'>Signup</li></Link>}
+  <Link to='/signup'>  <li  ><button className='btn bg-indigo-400 text-white px-7'>Signup</button></li></Link>}
     </ul>
 
-    
-  </div>
+</div>
+
+    </>
+
   )
 }
+
+
+
+
+
+
+
+
+
+ 

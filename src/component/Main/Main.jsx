@@ -21,7 +21,7 @@ export default function Main() {
           <Circles
             height={80}
             width={80}
-            color="#EF4444"
+            color="#818CF8"
             ariaLabel="circles-loading"
             visible={true}
           />

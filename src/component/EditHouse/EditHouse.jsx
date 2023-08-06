@@ -70,7 +70,7 @@ axios.put(`/houses/${data?._id}`,house)
 
     <>
      <ToastContainer />
-    <h1 className='text-center text-4xl mt-6 font-bold'>Add New <span className='text-red-500'>House</span></h1>
+    <h1 className='text-center text-4xl mt-6 font-bold'>Add New <span className='text-indigo-500'>House</span></h1>
       <div className=" h-96 overflow-y-auto  max-w-5xl mx-auto">
       <form onSubmit={handleSubmit} >
         <div className="mb-4">
@@ -212,7 +212,7 @@ axios.put(`/houses/${data?._id}`,house)
             className="border border-gray-300 rounded-md p-2 w-full"
           />
            {phoneNumberError && (
-                <p className="mt-2 text-xs text-red-500">{phoneNumberError}</p>
+                <p className="mt-2 text-xs text-indigo-500">{phoneNumberError}</p>
               )}
         </div>
 
@@ -230,7 +230,7 @@ axios.put(`/houses/${data?._id}`,house)
           ></textarea>
         </div>
 
-        <button type="submit" className="bg-red-500 btn text-white">
+        <button type="submit" className="bg-indigo-500 btn text-white">
           Edit
         </button>
       </form>

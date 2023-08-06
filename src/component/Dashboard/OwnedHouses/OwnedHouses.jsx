@@ -11,7 +11,7 @@ export default function OwnedHouses() {
     const { refetch, data: houses = [] } = useQuery({
         queryKey: ['houses'],
         queryFn: async () => {
-          const res = await fetch(`https://house-rent-server-two.vercel.app/houses?email=${currentUser?.email}`)
+          const res = await fetch(`https://house-rent-server-two.vercel.app/houses?email=${currentUser.email}`)
           return res.json()
         },
       })
@@ -30,7 +30,7 @@ export default function OwnedHouses() {
    <>
    
    <ToastContainer />
-   <h1 className='text-4xl text-center font-bold mt-7'>Owned <b className='text-red-500'>Houses</b></h1>
+   <h1 className='text-4xl text-center font-bold mt-7'>Owned <b className='text-indigo-500'>Houses</b></h1>
    
    
    <div className='mt-6 container mx-auto'>
@@ -79,7 +79,7 @@ export default function OwnedHouses() {
                <td>{house?.phoneNumber}</td>
                <td>{house?.description}</td>
                <td>
-              <Link to={`/dashboard/houseowner/edit-house/${house?._id}`}> <button className='btn bg-yellow-500 text-white'>Edit</button></Link>
+              <Link to={`/dashboard/houseowner/edit-house/${house?._id}`}> <button className='btn bg-indigo-500 text-white'>Edit</button></Link>
                    <button className='btn bg-red-500 text-white' onClick={()=>{handleDelete(house?._id)}}>Delete</button>
                </td>
              </tr> })}  

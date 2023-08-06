@@ -26,7 +26,7 @@ export default function Login() {
         password: password,
 
       });
-      navigate('/dashboard');
+      navigate('/');
       
     } catch (error) {
       console.error(error);
@@ -36,80 +36,90 @@ export default function Login() {
   };
 
   return (
-    <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-          Sign in to your account
-        </h2>
-      </div>
+   <>
+   
+   
+   
+   
 
-      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-              Email address
-            </label>
-            <div className="mt-2">
-              <input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                {...register('email', { required: 'Email is required' })}
-                aria-invalid={errors.email ? 'true' : 'false'}
+<form onSubmit={handleSubmit(onSubmit)} className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+	<div className="relative py-3 sm:max-w-xl sm:mx-auto">
+		<div
+			className="absolute inset-0 bg-gradient-to-r from-indigo-300 to-indigo-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
+		</div>
+		<div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+			<div className="max-w-md mx-auto">
+				<div>
+					<h1 className="text-2xl font-semibold">Login Form with Floating Labels</h1>
+				</div>
+				<div className="divide-y divide-gray-200">
+					<div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+						<div className="relative">
+							<input  id="email" name="email" type="text" className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Email address"
+              
+              
+              {...register('email', { required: 'Email is required' })}
+                          aria-invalid={errors.email ? 'true' : 'false'}
+            
+              
               />
-              {errors.email && (
+               {errors.email && (
                 <p role="alert" className="text-red-500">
                   {errors.email.message}
                 </p>
               )}
-            </div>
-          </div>
-
-          <div>
-            <div className="flex items-center justify-between">
-              <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
-                Password
-              </label>
-              <div className="text-sm">
-                <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                  Forgot password?
-                </a>
-              </div>
-            </div>
-            <div className="mt-2">
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                {...register('password', { required: 'Password is required' })}
-                aria-invalid={errors.password ? 'true' : 'false'}
+							<label htmlFor="email" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Email Address</label>
+						</div>
+						<div className="relative">
+							<input  id="password" name="password" type="password" className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Password" 
+              
+              
+              {...register('password', { required: 'Password is required' })}
+                          aria-invalid={errors.password ? 'true' : 'false'}
+              
+            
+              
               />
-              {errors.password && (
+                {errors.password && (
                 <p role="alert" className="text-red-500">
                   {errors.password.message}
                 </p>
               )}
-            </div>
-          </div>
-
-          <div>
-            <button
-              type="submit"
-              className="flex w-full justify-center rounded-md bg-red-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            >
-              Sign in
-            </button>
-          </div>
-        </form>
-
-        <p className='mt-4'>
+							<label htmlFor="password" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Password</label>
+						</div>
+              <p className='mt-4'>
           Don't have an account? <Link to='/signup'>Register</Link>
-        </p>
-      </div>
-    </div>
+         </p>
+						<div className="relative">
+							<button className="bg-indigo-500 text-white rounded-md px-16 py-1">Submit</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+      </>
   );
 }

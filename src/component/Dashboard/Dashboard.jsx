@@ -23,7 +23,7 @@ const [visible, setVisible] = useState(false);
       <div className='grid lg:grid-cols-12 grid-cols-1'>
 <div className='lg:col-span-2'>
     <div className='h-screen bg-slate-700 text-white lg:flex justify-center hidden   flex-col items-center    '>
-<Link to='/'><button className='btn bg-red-500 mb-9 text-white '>Go to Home</button></Link>
+<Link to='/'><button className='btn bg-indigo-400 mb-9 text-white '>Go to Home</button></Link>
 {allusers.find((x)=>x?.email===currentUser?.email)?.role==='house owner'?   <ul  >
             <li className='text-center text-2xl  '>House Owner</li>
            <Link to="/dashboard/houseowner/add-new-house" > <li className='flex place-items-center gap-3 mt-9 cursor-pointer hover:text-red-500 duration-300 '> <BsFillHouseAddFill/>Add New House</li></Link>

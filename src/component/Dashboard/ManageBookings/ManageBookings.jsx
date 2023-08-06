@@ -36,7 +36,7 @@ export default function ManageBookings() {
     }
   return (
     <>
-    <h1 className='text-center text-4xl mt-6 font-bold'> My<span className='text-red-500'> Bookings</span></h1>
+    <h1 className='text-center text-4xl mt-6 font-bold'> My<span className='text-indigo-500'> Bookings</span></h1>
     
     <div className="overflow-x-auto h-96 mt-12">
     <table className="table">
