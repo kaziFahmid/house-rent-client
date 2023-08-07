@@ -27,6 +27,8 @@ import PrivateRoute from './component/PrivateRoute';
 import IsHouseRenter from './component/IsHouseRenter';
 import OwnerRoute from './component/OwnerRoute';
 import ViewBookings from './component/ViewBookings/ViewBookings';
+import AboutUs from './component/AboutUs/AboutUs';
+import Contactus from './component/Contactus/Contactus';
 
 
 
@@ -52,6 +54,18 @@ const router = createBrowserRouter([
      {  
       path: "/signup",
     element: <Signup/>,
+    
+    },
+      
+    {  
+      path: "/aboutus",
+    element: <AboutUs/>,
+    
+    },
+      
+    {  
+      path: "/contactus",
+    element: <Contactus/>,
     
     },
     

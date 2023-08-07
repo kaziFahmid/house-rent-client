@@ -43,7 +43,8 @@ export default function Header() {
     <Sidebar style={{width:"80%"}} visible={visible} onHide={() => setVisible(false)}>
      <ul className='font-semibold flex flex-col justify-center items-center gap-5'>
 <Link to="/"><li >Home</li></Link>
-  
+<Link to="/aboutus"><li >AboutUs</li></Link>
+<Link to="/contactus"><li >ContactUs</li></Link>
        
         {currentUser&&<Link to='/dashboard'><li  className='btn btn-ghost normal-case text-xl text-black hover:text-red-500'>Dashboard</li></Link>}
       {currentUser?<li   onClick={handleLogout}>LogOut</li>:    <Link to='/login'> <li  >Login</li></Link>}
@@ -63,6 +64,8 @@ export default function Header() {
 
     <ul className=' font-bold hidden md:flex justify-center items-center gap-5'>
 <Link to="/"><li >Home</li></Link>
+<Link to="/aboutus"><li >AboutUs</li></Link>
+<Link to="/contactus"><li >ContactUs</li></Link>
    {allusers.find((x)=>x?.email===currentUser?.email)?.role==="house renter"&& <li>
     <button className="btn">
   My Bookings
@@ -71,7 +74,7 @@ export default function Header() {
     </li>}
     
         {currentUser&&<Link to='/dashboard'><li >Dashboard</li></Link>}
-      {currentUser?<li   onClick={handleLogout}>LogOut</li>:    <Link to='/login'> <li  ><button className='btn border bg-slate-100 px-7 border-slate-400' >Login</button></li></Link>}
+      {currentUser?<li   onClick={handleLogout} className='cursor-pointer'>LogOut</li>:    <Link to='/login'> <li  ><button className='btn border bg-slate-100 px-7 border-slate-400' >Login</button></li></Link>}
         
 {!currentUser&&   
   <Link to='/signup'>  <li  ><button className='btn bg-indigo-400 text-white px-7'>Signup</button></li></Link>}

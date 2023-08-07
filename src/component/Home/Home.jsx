@@ -7,7 +7,8 @@ import useHouseOwner from '../hooks/useHouseOwner';
 import { AuthContext } from '../AuthProvider';
 import toast, { Toaster } from 'react-hot-toast';
 import useBookings from '../hooks/useBookings';
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { useNavigate } from 'react-router-dom';
 import { BiSolidBed } from 'react-icons/bi';
 import { BiSolidBath } from 'react-icons/bi';
@@ -34,7 +35,12 @@ const navigate=useNavigate()
 let itemsPerPage = 10;
 let pageNumbers = Math.ceil(housescount.result / itemsPerPage);
 let pagination = [];
-
+AOS.init({
+  offset: 200,
+  duration: 600,
+  easing: 'ease-in-sine',
+  delay: 100,
+});
 for (let i = 0; i <= pageNumbers; i++) {
   pagination.push(i);
 }
@@ -196,7 +202,7 @@ return toast.error('You cannot add more than 2 bookings')
 
 
 <div className='grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 md:max-w-6xl mx-auto gap-8 mt-16 '>
-{houses.map((house)=>{return <div  key={house._id} className="   bg-base-100 shadow-xl lg:mt-0 mt-9 relative">
+{houses.map((house)=>{return <div data-aos="zoom-in"  key={house._id} className="   bg-base-100 shadow-xl lg:mt-0 mt-9 relative">
 <div className=" bg-indigo-400 px-4 py-2 text-white absolute top-0">Popular</div>
   <figure><img src= {house.picture} className='img-fluid rounded-t-lg  ' alt="Shoes" /></figure>
   <div className="px-4 mt-5">
