@@ -17,7 +17,7 @@ import { BsFillCalendarDateFill } from 'react-icons/bs';
 import WhoweAre from '../WhoweAre/WhoweAre';
 import FeedBacks from './FeedBacks/FeedBacks';
 import NewsLetter from '../NewsLetter/NewsLetter';
-
+import LazyLoad from 'react-lazy-load';
 export default function Home() {
 
   const[refetch,housebookings]=useBookings()
@@ -202,9 +202,15 @@ return toast.error('You cannot add more than 2 bookings')
 
 
 <div className='grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 md:max-w-6xl mx-auto gap-8 mt-16 '>
+
 {houses.map((house)=>{return <div data-aos="zoom-in"  key={house._id} className="   bg-base-100 shadow-xl lg:mt-0 mt-9 relative">
 <div className=" bg-indigo-400 px-4 py-2 text-white absolute top-0">Popular</div>
-  <figure><img src= {house.picture} className='img-fluid rounded-t-lg  ' alt="Shoes" /></figure>
+  <figure>
+  <LazyLoad height={229} >
+    <img src= {house.picture} className='img-fluid rounded-t-lg  ' alt="Shoes" />
+    </LazyLoad>
+
+    </figure>
   <div className="px-4 mt-5">
   <div className="rating rating-sm">
   <input type="radio" name="rating-6" className="mask mask-star-2 bg-orange-400" />
@@ -256,6 +262,7 @@ description:house.description})} disabled={allusers.find((x)=>x?.email===current
   </div>
   
 </div>})}
+
 
 </div>
 
