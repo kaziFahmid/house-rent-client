@@ -28,7 +28,7 @@ export default function Banner() {
   
 
 <div  className="  w-72 mx-auto lg:mx-0 bg-base-100 shadow-xl lg:mt-0 mt-9">
-  <figure><img src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg" className='img-fluid rounded-lg' alt="Shoes" /></figure>
+  <figure><img src="https://i.ibb.co/HVTkQVs/sparta-0-0-0-d60217d2c379489398f52916b81e268c.webp" className='img-fluid rounded-lg' alt="Shoes" /></figure>
   <div className="px-4 mt-5">
   <div className='flex items-center  justify-start'>
   <h2 className="card-title text-indigo-400 font-bold text-2xl">$2,700/ </h2>
@@ -75,7 +75,7 @@ export default function Banner() {
 
 
 <div   className=" w-44 border-2 border-indigo-600 bg-base-100 rounded-lg shadow-xl lg:mt-0 mt-9">
-  <figure><img src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg" height={100}className='img-fluid rounded-lg' alt="Shoes" /></figure>
+  <figure><img src="https://i.ibb.co/HVTkQVs/sparta-0-0-0-d60217d2c379489398f52916b81e268c.webp" className='img-fluid rounded-lg' alt="Shoes" /></figure>
   <div className="px-4 mt-5">
   <div className='flex items-center  justify-start'>
   <h2 className="card-title text-indigo-400 font-bold ">$2,700/ </h2>
