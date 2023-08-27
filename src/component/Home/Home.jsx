@@ -17,6 +17,9 @@ import { BsFillCalendarDateFill } from 'react-icons/bs';
 import WhoweAre from '../WhoweAre/WhoweAre';
 import FeedBacks from './FeedBacks/FeedBacks';
 import NewsLetter from '../NewsLetter/NewsLetter';
+import Price from '../Price/Price';
+import Service from '../Service/Service';
+import BestHouse from '../BestHouse/BestHouse';
 
 export default function Home() {
 
@@ -51,7 +54,7 @@ for (let i = 0; i <= pageNumbers; i++) {
     ]);
   };
 
-  const { data: houses = [] } = useQuery({
+  const { data: houses = [],isLoading: isFetchingHouses } = useQuery({
     queryKey: [
       'houses',
       city,
@@ -66,6 +69,7 @@ for (let i = 0; i <= pageNumbers; i++) {
     queryFn: async () => {
       const res = await fetch(`https://house-rent-server-two.vercel.app/houses?city=${city}&bedrooms=${bedrooms}&bathrooms=${bathrooms}&roomsize=${roomsize}&availabilityDate=${availability}&minRent=${rentRange[0]}&maxRent=${rentRange[1]}&page=${currentPage}&limit=${itemsPerPage}`);
       return res.json();
+      
     },
 
 
@@ -200,7 +204,9 @@ return toast.error('You cannot add more than 2 bookings')
 
 
 
-
+<div className={`text-center mt-8 ${isFetchingHouses ? '' : 'hidden'}`}>
+        <span className="loading loading-spinner loading-lg text-indigo-400"></span>
+      </div>
 <div className='grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 md:max-w-6xl mx-auto gap-8 mt-16 '>
 
 {houses.map((house)=>{return <div data-aos="zoom-in"  key={house._id} className="   bg-base-100 shadow-xl lg:mt-0 mt-9 relative">
@@ -273,7 +279,12 @@ description:house.description})} disabled={allusers.find((x)=>x?.email===current
 
 <WhoweAre/>
 <FeedBacks/>
+
+<Price/>
+<Service/>
+<BestHouse/>
 <NewsLetter/>
+
 
     </>
   );

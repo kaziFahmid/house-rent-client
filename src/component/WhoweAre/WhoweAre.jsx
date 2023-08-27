@@ -1,11 +1,19 @@
 import React from 'react'
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 const WhoweAre = () => {
-
+ 
+  
+  AOS.init({
+    offset: 200,
+    duration: 600,
+    easing: 'ease-in-sine',
+    delay: 100,
+  });
   return (
     <div className='grid  lg:grid-cols-2 grid-cols-1 gap-5 max-w-6xl mx-auto mt-40'>
       <div  className='flex justify-center items-center flex-col '>
-       <div >
+       <div data-aos="fade-right" >
        <p className='text-indigo-400 mb-4'>WHO ARE WE</p>
         <h1 className='text-4xl font-semibold mb-4'>Assisting individuals in locating the appropriate real estate.</h1>
         <p>Donec porttitor euismod dignissim. Nullam a lacinia ipsum, nec dignissim purus. Nulla convallis ipsum molestie nibh malesuada, ac malesuada leo volutpat.</p>
@@ -26,7 +34,7 @@ const WhoweAre = () => {
       </div>
 
 
-      <div  >
+      <div data-aos="fade-down" >
         <img src='https://i.ibb.co/1Qzrtxw/Group-85.png' className='img-fluid'/>
       </div>
     </div>
